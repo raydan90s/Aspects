@@ -9,26 +9,24 @@ package com.mycompany.singleton1;
  * @author Kevin
  */
 public class Logger {
-    // Variable estática para almacenar la única instancia de Logger
-    private static Logger instance = null;
+    static Logger instance = null; // Instancia Singleton
 
-    public Logger() {
+    Logger() { // Constructor con acceso package-private (sin `public` o `private`)
         System.out.println("Logger initialized.");
     }
 
-    // Método para registrar un mensaje
-    public void log(String message) {
+    public void log(String message) { // Método para registrar mensajes
         System.out.println("Log entry: " + message);
     }
 
-    // Método para obtener la instancia desde LoggerProxy (solo Proxy puede acceder)
+    // Método package-private para obtener la instancia
     static Logger getInstanceInternal() {
         return instance;
     }
 
-    // Método protegido para asignar la instancia desde LoggerProxy (solo Proxy puede acceder)
-    static void setInstance(Logger instance) {
-        Logger.instance = instance;
+    // Método package-private para asignar la instancia
+    static void setInstance(Logger newInstance) {
+        instance = newInstance;
     }
 }
 

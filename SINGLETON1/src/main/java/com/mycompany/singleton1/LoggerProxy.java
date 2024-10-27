@@ -11,10 +11,10 @@ package com.mycompany.singleton1;
 public class LoggerProxy {
     public static Logger getInstance() {
         if (Logger.getInstanceInternal() == null) {
-            Logger.setInstance(new Logger());
+            Logger.setInstance(new Logger()); // Ahora se puede crear la instancia sin error
             System.out.println("Logger instance created by Proxy");
         }
-        return Logger.getInstanceInternal();
+        return Logger.getInstanceInternal(); // Devuelve la instancia
     }
 }
 
